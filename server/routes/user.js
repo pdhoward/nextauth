@@ -25,9 +25,8 @@ router.post("/register", async (req, res) => {
 
 //Login User
 router.post("/login", async (req, res, next) => {
-  console.log('----made it to login --------')
-  user = await User.findOne({ email: req.body.email });
-  console.log(user.toJSON())
+ 
+  user = await User.findOne({ email: req.body.email });  
   if (!user) {
     return res.status(404).json({ message: "Not Authorized - Username invalid" });
   }
@@ -36,16 +35,15 @@ router.post("/login", async (req, res, next) => {
     return res.status(400).json({ message: "Not Authorized - Incorrect Password" });
   }
 
-  const tokeni = jwt.sign(
+  const token = jwt.sign(
     { _id: user.id, name: user.name, email: user.email },
     mySecret
   );
 
-  res.cookie("jwt", tokeni, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-
-  const { password, ...data } = await user.toJSON();
-
-  res.send(tokeni);
+  res.cookie("jwt", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+  
+  const {_id, name, email} = await user.toJSON()  
+  res.send({id: _id, name, email, token });
   next()
 });
 

@@ -9,16 +9,21 @@ const login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    const asd = await fetch("http://localhost:8000/api/users/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },      
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+    const data = await fetch("http://localhost:8000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },      
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      })
+      .then((d) => {return d.json()})
+    
+    // note data object includes user name, and jwt authorizing access
+    await router.push({
+      pathname: "/profile",
+      query: data
     });
-    console.log(asd)
-    await router.push("/profile");
   };
 
   return (

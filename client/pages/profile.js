@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router"
 
 const profile = props => {
   const [message, setMessage] = useState("");
 
   const [auth, setAuth] = useState(false);
 
+  const router = useRouter()
+
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/users/user", {
-          credentials: "include",
-        });
-        const content = await response.json();
+        const {user, token} = router.query
+        console.log(user, jwt)        
         setAuth(true);
-        setMessage(`Welcome ${content.name}`);
+        localStorage.setItem('token', token)
+        setMessage(`Welcome ${user}`);
       } catch (err) {
         setAuth(false);
-        setMessage("You are not authenticated user");
+        setMessage("You are not authenticated");
       }
     })();
   });
