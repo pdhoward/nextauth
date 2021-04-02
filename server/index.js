@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-
+const port = 8000
 //middleware
 app.use(cookieParser());
 app.use(cors())
@@ -35,4 +35,4 @@ app.get("/", (req, res) => {
   res.send("home");
 });
 
-app.listen(8000);
+app.listen(port, () => console.log(`Server running on Port ${port}`))
