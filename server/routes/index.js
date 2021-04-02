@@ -1,21 +1,21 @@
 const express =     require('express')
-const usersCtrl =   require('../controllers')
+const users =   require('../controllers')
 const verifyToken = require('../auth').verifyToken
 
 const usersRouter = new express.Router()
 
-usersRouter.route('/').get(usersCtrl.index)
+usersRouter.route('/').get(users.index)
 
-usersRouter.route('/').post(usersCtrl.create)
+usersRouter.route('/register').post(users.create)
 
-usersRouter.post('/authenticate', usersCtrl.authenticate)
+usersRouter.post('/login', users.authenticate)
 
 usersRouter.use(verifyToken)
 
-usersRouter.route('/:id').get(usersCtrl.show)
+usersRouter.route('/:id').get(users.show)
 
-usersRouter.route('/:id').patch(usersCtrl.update)
+usersRouter.route('/:id').patch(users.update)
 
-usersRouter.route('/:id').delete(usersCtrl.destroy)
+usersRouter.route('/:id').delete(users.destroy)
 
 module.exports = usersRouter

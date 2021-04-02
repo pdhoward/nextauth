@@ -2,37 +2,43 @@ require("dotenv").config()
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = 8000
-//middleware
-app.use(cookieParser());
+ 
+ /////////////////////////////////////////////
+ /////////  Middleware        ///////////////
+ ///////////////////////////////////////////
+
 app.use(cors())
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
  /////////////////////////////////////////////////
- ///// Register and Config Routes ///////////////
+ /////////         Database       ///////////////
+ ///////////////////////////////////////////////
+mongoose.connect(
+  "mongodb://localhost:27017/nodeauth",
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  (err) => {
+    console.log(err ||"mongodb connected");
+  }
+);
+
+ /////////////////////////////////////////////////
+ ////////// Register and Config Routes //////////
  ///////////////////////////////////////////////
  const header =       express.Router()
 
 //import routes
 require('./routes/header')(header)
-const userRoutes = require("./routes/user");
+const usersRoutes = require('./routes')
 
-mongoose.connect(
-  "mongodb://localhost:27017/nodeauth",
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
-  () => {
-    console.log("mongodb connected");
-  }
-);
-//routes
-app.use(header);
-app.use("/api/users", userRoutes);
+ /////////////////////////////////////////////////
+ //////////       API Catalogue       ///////////
+ ///////////////////////////////////////////////
 
-app.get("/", (req, res) => {
-  res.send("home");
-});
+app.use(header)
+app.use("/api/users", userRoutes)
 
-app.listen(port, () => console.log(`Server running on Port ${port}`))
+app.listen(port, (err) => console.log(err || `Server running on Port ${port}`))

@@ -28,7 +28,7 @@ module.exports = {
 		})
 	},
 
-	// this function is behind the firewall
+	// you'll note in the routes that this function is behind the firewall
 	show: async (req, res) => {
 		let userProfile = jwtDecode(req.params.id)		
 		let joke = jokes[Math.floor(Math.random() * jokes.length)]
@@ -74,9 +74,9 @@ module.exports = {
 				// deny access
 				return res.json({success: false, message: "Invalid credentials."})
 			}
-
+			const {_id, name, email} = user.toJSON()  
 			const token = signToken(user)
-			res.json({success: true, message: "Token attached.", token})
+			res.json({ success: true, message: "Token attached.", id: _id, name, email, token })
 		})
 	}
 }
