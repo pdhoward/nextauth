@@ -1,6 +1,7 @@
 const express =     require('express')
 const users =   require('../controllers')
 const verifyToken = require('../auth').verifyToken
+const verifyAccess = require('../auth').verifyAccess
 
 const usersRouter = new express.Router()
 
@@ -10,7 +11,9 @@ usersRouter.route('/register').post(users.create)
 
 usersRouter.post('/login', users.authenticate)
 
-usersRouter.post('/verify', verifyToken)
+usersRouter.post('/logout', users.logout)
+
+usersRouter.post('/verify', verifyAccess)
 
 usersRouter.use(verifyToken)
 

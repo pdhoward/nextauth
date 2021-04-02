@@ -78,5 +78,10 @@ module.exports = {
 			const token = signToken(user)
 			res.json({ success: true, message: "Token attached.", id: _id, name, email, token })
 		})
+	},
+
+	logout: (req, res) => {
+		 // the token is removed from local storage client side
+		 res.send({ message: "success" });
 	}
 }

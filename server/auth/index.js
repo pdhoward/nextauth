@@ -3,7 +3,8 @@ const User = require('../models/User.js')
 
 // Note this is the supper secret for signing the JWT
 // this should be acquired via .env or a microservice
-const JWT_SECRET  = 'thisismysecretkey'
+//import secret from env
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // function for creating tokens
 function signToken(user) {
@@ -14,7 +15,7 @@ function signToken(user) {
 	return jwt.sign(userData, JWT_SECRET)
 }
 
-// function for verifying tokens
+// function for verifying tokens - this is the firewall
 function verifyToken(req, res, next) {
 	// grab token from either headers, req.body, or query string
 	const token = req.get('token') || req.body.token || req.query.token
@@ -36,7 +37,29 @@ function verifyToken(req, res, next) {
 	})
 }
 
+
+// function for verifying access of a user based on their token
+function verifyAccess(req, res, next) {
+	// grab token from either headers, req.body, or query string
+	const token = req.get('token') || req.body.token || req.query.token
+	// if no token present, deny access
+	if(!token) return res.json({success: false, message: "No token provided"})
+	// otherwise, try to verify token
+	jwt.verify(token, JWT_SECRET, (err, decodedData) => {
+		// if problem with token verification, deny access
+		if(err) return res.json({success: false, message: "Invalid token."})
+		// otherwise, search for user by id that was embedded in token
+		User.findById(decodedData._id, (err, user) => {
+			// if no user, deny access
+			if(!user) return res.json({success: false, message: "Invalid token."})
+			// otherwise, return decoded object
+			return res.json(decodedData)
+		})
+	})
+}
+
 module.exports = {
 	signToken,
-	verifyToken
+	verifyToken,
+	verifyAccess
 }
