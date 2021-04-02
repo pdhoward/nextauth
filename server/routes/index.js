@@ -10,6 +10,8 @@ usersRouter.route('/register').post(users.create)
 
 usersRouter.post('/login', users.authenticate)
 
+usersRouter.post('/verify', verifyToken)
+
 usersRouter.use(verifyToken)
 
 usersRouter.route('/:id').get(users.show)

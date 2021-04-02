@@ -32,7 +32,7 @@ mongoose.connect(
 
 //import routes
 require('./routes/header')(header)
-const usersRoutes = require('./routes')
+const userRoutes = require('./routes')
 
  /////////////////////////////////////////////////
  //////////       API Catalogue       ///////////
