@@ -50,7 +50,9 @@ router.post("/verify", async (req, res, next) => {
   
   try {
     console.log(`----------VERIFY------`)
-    const token = req.body.token
+    let token = req.body.token
+
+    if (!token) {token = 'not provided'}
     console.log(`jwt is ${token}`)
     const claims = jwt.verify(token, mySecret);
     console.log(claims)
@@ -63,10 +65,10 @@ router.post("/verify", async (req, res, next) => {
     }
     console.log(claims)
     return res.json(claims);
-    next()
+   
   } catch (err) {
     console.log(`-----------ERROR---------`)
-    console.log(err)
+    console.log(err.name, err.message)
     return res.status(401).send({ message: "Unauthenticated" });
   }
 });
