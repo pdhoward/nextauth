@@ -45,7 +45,7 @@ const Nav = props => {
           </li>
 
           <li>
-            <Link href="/isauth" to="/isauth">
+            <Link href="/isauth">
               <a>Secret Page</a>
             </Link>
           </li>

@@ -8,19 +8,19 @@ const profile = props => {
 
   const router = useRouter()
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const {id, name, email, token} = router.query
-        console.log(name, token)        
-        setAuth(true);        
-        setMessage(`Welcome ${user}`);
+  useEffect(async () => {
+   
+      try {  
+        const {name, token} = router.query     
+        setAuth(true); 
+        setMessage(`Welcome ${name}`);
       } catch (err) {
         setAuth(false);
+        console.log(err)
         setMessage("You are not authenticated");
       }
-    })();
-  });
+    }, [])
+
 
   return <div className="default">{message}</div>;
 };

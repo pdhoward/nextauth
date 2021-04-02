@@ -63,6 +63,7 @@ router.post("/verify", async (req, res, next) => {
     }
     console.log(claims)
     return res.json(claims);
+    next()
   } catch (err) {
     console.log(`-----------ERROR---------`)
     console.log(err)
