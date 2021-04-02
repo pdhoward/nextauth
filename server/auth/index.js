@@ -6,13 +6,19 @@ const User = require('../models/User.js')
 //import secret from env
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// function for creating tokens
+// function for creating tokens from mongoose object
 function signToken(user) {
 	// toObject() returns a basic js object 
 	// comprised of data from db. Delete password before creating jwt
 	const userData = user.toObject()
 	delete userData.password
 	return jwt.sign(userData, JWT_SECRET)
+}
+
+// function for creating tokens from plain js object
+function signSimpleToken(user) {	
+	delete user.password
+	return jwt.sign(user, JWT_SECRET)
 }
 
 // function for verifying tokens - this is the firewall
@@ -60,6 +66,7 @@ function verifyAccess(req, res, next) {
 
 module.exports = {
 	signToken,
+	signSimpleToken,
 	verifyToken,
 	verifyAccess
 }

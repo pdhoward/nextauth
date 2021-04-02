@@ -5,6 +5,12 @@ const verifyAccess = require('../auth').verifyAccess
 
 const usersRouter = new express.Router()
 
+//////////////test routes//////////////////
+usersRouter.route('/generate').post(users.generate)  // gen a token
+usersRouter.route('/show').post(users.show) // show a joke
+
+//////////////main routes for app///////////////
+
 usersRouter.route('/').get(users.index)
 
 usersRouter.route('/register').post(users.create)

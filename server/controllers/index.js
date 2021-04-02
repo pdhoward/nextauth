@@ -1,24 +1,8 @@
-const jwtDecode = require('jwt-decode')
-const User = 	  require('../models/User.js')
-const signToken = require('../auth').signToken
-
-const jokes = [
-	'I ate a clock yesterday, it was very time-consuming.',
-	'Velcro—what a rip-off!',
-	'Don\'t you hate it when someone answers their own questions? I do.',
-	'I recently decided to sell my vacuum cleaner as all it was doing was gathering dust.',
-	'What do you get a hunter for his birthday? A birthday pheasant',
-	'What does a clam do on his birthday? He shellabrates!',
-	'Q: Why was the cell phone wearing glasses? A: It lost its contacts.',
-	'You know you\'re texting too much when... ...you\'re happy when you get stopped at a red light.',
-	'Never trust math teachers who use graph paper. They\'re always plotting something.',
-	'Q: What do you get if you divide the circumference of a jack-o-lantern by its diameter? A: Pumpkin pi',
-	'Q: What do you call a number that can\'t keep still? A: A roamin\' numeral.',
-	'Q: How do mathematicians scold their children? A: "If I\'ve told you n times, I\'ve told you n+1 times..."',
-	'Did you hear about the monkeys who shared an Amazon account? They were Prime mates.',
-	'Q: What\’s worse than raining cats and dogs? A: Hailing taxis',
-	'Q: What\'s Irish and sits outside? A: Patio furniture'
-]
+const jwtDecode = 		require('jwt-decode')
+const User = 	  		require('../models/User.js')
+const signToken = 		require('../auth').signToken
+const signSimpleToken = require('../auth').signSimpleToken
+const {jokes} = 		require('../data/jokes.js')
 
 module.exports = {
 	// list all users
@@ -27,14 +11,30 @@ module.exports = {
 			res.json(users)
 		})
 	},
+	// a simple utility which returns a jwt - intended to be used
+	// with postman for testing
+	generate: (req, res) => {
+		const {name, email, password} = req.body
+		let token = signSimpleToken({name, email, password})
+		res.send(token)
+	},
 
 	// you'll note in the routes that this function is behind the firewall
 	show: async (req, res) => {
-		let userProfile = jwtDecode(req.params.id)		
+		console.log(req.body)
+		console.log(jokes)
+		let userProfile = jwtDecode(req.body.id)
+		console.log(userProfile)	
 		let joke = jokes[Math.floor(Math.random() * jokes.length)]
 		// note we execute .lean() to convert a mongoose document to js doc
 		let doc = await User.find({email: userProfile.email}).lean()		
-		doc[0].joke = joke						
+		if (doc.length === 0 || err) {
+			doc = []
+			doc.push(userProfile)			
+			doc[0].joke = joke
+		} else {
+			doc[0].joke = joke
+		}					
 		res.json(doc)
 	},
 
