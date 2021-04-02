@@ -40,29 +40,29 @@ router.post("/login", async (req, res, next) => {
     mySecret
   );
 
-  res.cookie("jwt", token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
-  
   const {_id, name, email} = await user.toJSON()  
   res.send({id: _id, name, email, token });
   next()
 });
 
 //Authenticate User
-router.get("/user", async (req, res, next) => {
+router.post("/verify", async (req, res, next) => {
   
   try {
-    console.log(`-------------MADE IT--------------`)
-    const cookie = req.cookies["jwt"];
-    console.log(`jwt is ${cookie}`)
-    const claims = jwt.verify(cookie, mySecret);
+    console.log(`----------VERIFY------`)
+    const token = req.body.token
+    console.log(`jwt is ${token}`)
+    const claims = jwt.verify(token, mySecret);
     console.log(claims)
     if (!claims) {
-      return res.status(401).send({ message: "Unauthenticated" });
+      return res.status(401).send({ message: "Invalid Token - Not Authorized" });
+    }    
+    const user = await User.findOne({ _id: claims._id })
+    if (!user) {
+      return res.status(401).send({ message: "Token Valid but User Expired - Not Authorized" });
     }
-
-    const user = await User.findOne({ _id: claims._id }).select("-password");
-    console.log(user)
-    return res.json(user);
+    console.log(claims)
+    return res.json(claims);
   } catch (err) {
     console.log(`-----------ERROR---------`)
     console.log(err)
@@ -70,9 +70,9 @@ router.get("/user", async (req, res, next) => {
   }
 });
 
-//Deauthenticate user
+//token is removed on client side. 
 router.post("/logout", (req, res, next) => {
-  res.cookie("jwt", " ", { maxAge: 0 });
+  // the token is rmeoved from local storage client side
   res.send({ message: "success" });
   next()
 });

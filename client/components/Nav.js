@@ -5,11 +5,18 @@ const Nav = props => {
   const router = useRouter();
   //logout function
   const logout = async () => {
+
+    let token = localStorage.getItem('token')
+    localStorage.removeItem('token')
+
     await fetch("http://localhost:8000/api/users/logout", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },      
+      headers: { "Content-Type": "application/json"}, 
+      body: JSON.stringify({
+        token
+      }),   
     });
-    await router.push("/login");
+    await router.push("/");
   };
 
   return (
@@ -39,7 +46,7 @@ const Nav = props => {
 
           <li>
             <Link href="/isauth" to="/isauth">
-              <a>Check if Authorized</a>
+              <a>Secret Page</a>
             </Link>
           </li>
         </ul>

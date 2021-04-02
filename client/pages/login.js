@@ -20,6 +20,8 @@ const login = () => {
       .then((d) => {return d.json()})
     
     // note data object includes user name, and jwt authorizing access
+    localStorage.setItem('token', data.token)
+    
     await router.push({
       pathname: "/profile",
       query: data

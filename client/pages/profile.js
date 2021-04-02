@@ -11,10 +11,9 @@ const profile = props => {
   useEffect(() => {
     (async () => {
       try {
-        const {user, token} = router.query
-        console.log(user, jwt)        
-        setAuth(true);
-        localStorage.setItem('token', token)
+        const {id, name, email, token} = router.query
+        console.log(name, token)        
+        setAuth(true);        
         setMessage(`Welcome ${user}`);
       } catch (err) {
         setAuth(false);
