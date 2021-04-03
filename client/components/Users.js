@@ -1,3 +1,7 @@
+
+// EXAMPLE OF WRITING A TABLE IN REACTJS
+// COMPONENT NOT USED IN THIS PROJECT
+
 import React from 'react'
 
 export const Users = ({users}) => {
