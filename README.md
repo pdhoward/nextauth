@@ -14,3 +14,13 @@ Auth process using next and nodejs api server with mongo
 2. The client has a set of APIs end points which are resolved at the server
 3. On the server, JSON Web Tokens are used to authenticate. A JWT created by the user after signing up and logging in is passed to the client and maintained in local storage
 4. Mongoose model incoporates SHA256 hashing and encryption for the password, which is captured in the mongo collection
+
+#### RESEARCH
+
+* docs
+https://docs.microsoft.com/en-us/azure/cognitive-services/
+
+* custom vision
+https://docs.microsoft.com/en-us/azure/cognitive-services/Custom-Vision-Service/overview
+
+

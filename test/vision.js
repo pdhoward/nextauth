@@ -11,6 +11,14 @@ const cognitiveServiceCredentials = new CognitiveServicesCredentials(computerVis
 const client = new ComputerVisionClient(cognitiveServiceCredentials, computerVisionEndPoint);
 
 const items = [
+  'https://res.cloudinary.com/stratmachine/image/upload/v1617739647/objects/tablechairs_hpy9dd.jpg',
+  'https://res.cloudinary.com/stratmachine/image/upload/v1617739638/objects/packingboxes_rgonvl.jpg',
+  'https://res.cloudinary.com/stratmachine/image/upload/v1617739634/objects/packingbox_ivqebg.webp',
+  'https://res.cloudinary.com/stratmachine/image/upload/v1617739625/objects/loveseat_bm1y62.jpg',
+  'https://res.cloudinary.com/stratmachine/image/upload/v1617739621/objects/livingroomset_yxqp7u.jpg',
+  'https://res.cloudinary.com/stratmachine/image/upload/v1617739610/objects/boxqrcode_jrptw1.jpg',
+  'https://res.cloudinary.com/stratmachine/image/upload/v1589910869/qrcodes/frame_fbeose.png',
+  'https://res.cloudinary.com/stratmachine/image/upload/v1589910869/qrcodes/frame_fbeose.png',
   'https://res.cloudinary.com/stratmachine/image/upload/v1617737720/objects/mildlee-7KKy7-TeeVs-unsplash_dqmnxt.jpg',
   'https://res.cloudinary.com/stratmachine/image/upload/v1617737720/objects/ruchindra-gunasekara-GK8x_XCcDZg-unsplash_ymtlzu.jpg',
   'https://res.cloudinary.com/stratmachine/image/upload/v1617737720/objects/curology-E_dRKdBhxk4-unsplash_r2y3et.jpg',
