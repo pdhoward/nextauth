@@ -2,10 +2,13 @@ require('dotenv').config()
 
 const {
     ComputerVisionClient,
-    ComputerVisionModels
-  } = require("@azure/cognitiveservices-computervision")
-
+    ComputerVisionModels } =             require("@azure/cognitiveservices-computervision")
 const { CognitiveServicesCredentials } = require("@azure/ms-rest-azure-js")
+
+const computerVisionKey = process.env["COMPUTERVISIONKEY"]
+const computerVisionEndPoint =process.env["COMPUTERVISIONENDPOINT"]
+const cognitiveServiceCredentials = new CognitiveServicesCredentials(computerVisionKey);
+const client = new ComputerVisionClient(cognitiveServiceCredentials, computerVisionEndPoint);
 
 const items = [
   'https://res.cloudinary.com/stratmachine/image/upload/v1617737720/objects/mildlee-7KKy7-TeeVs-unsplash_dqmnxt.jpg',
@@ -18,6 +21,7 @@ const items = [
   'https://res.cloudinary.com/stratmachine/image/upload/v1617737720/objects/mildlee-8N6z4yXUkwY-unsplash_cqs8nk.jpg'
 ]
 async function identify(uri) {
+    
     const url = uri       
     const options = {
       maxCandidates: 5,
@@ -36,11 +40,7 @@ async function identify(uri) {
 }
 
 async function main() {
-    const computerVisionKey = process.env["COMPUTERVISIONKEY"]
-    const computerVisionEndPoint =
-      process.env["COMPUTERVISIONENDPOINT"]
-    const cognitiveServiceCredentials = new CognitiveServicesCredentials(computerVisionKey);
-    const client = new ComputerVisionClient(cognitiveServiceCredentials, computerVisionEndPoint);
+    
     items.forEach(i => identify(i))    
   }
   
