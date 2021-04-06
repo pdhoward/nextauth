@@ -1,0 +1,32 @@
+[
+  {
+    "id": "/subscriptions/525c3af6-02f4-4b26-8957-40dc58667779/resourceGroups/vision/providers/Microsoft.Resources/deployments/Microsoft.CognitiveServicesComputerVision-20210406110639/operations/AF56F225966A3DA8",
+    "operationId": "AF56F225966A3DA8",
+    "properties": {
+      "provisioningOperation": "Create",
+      "provisioningState": "Succeeded",
+      "timestamp": "2021-04-06T16:10:34.0506029Z",
+      "duration": "PT2.9362271S",
+      "trackingId": "39da5934-8383-4c6e-a08d-34bc63fb4817",
+      "serviceRequestId": "3576de2f-532a-481e-a7c6-db5d2e8de441",
+      "statusCode": "Created",
+      "targetResource": {
+        "id": "/subscriptions/525c3af6-02f4-4b26-8957-40dc58667779/resourceGroups/vision/providers/Microsoft.CognitiveServices/accounts/strategicmachines",
+        "resourceType": "Microsoft.CognitiveServices/accounts",
+        "resourceName": "strategicmachines"
+      }
+    }
+  },
+  {
+    "id": "/subscriptions/525c3af6-02f4-4b26-8957-40dc58667779/resourceGroups/vision/providers/Microsoft.Resources/deployments/Microsoft.CognitiveServicesComputerVision-20210406110639/operations/08585838814552902415",
+    "operationId": "08585838814552902415",
+    "properties": {
+      "provisioningOperation": "EvaluateDeploymentOutput",
+      "provisioningState": "Succeeded",
+      "timestamp": "2021-04-06T16:10:34.1164819Z",
+      "duration": "PT3.0021061S",
+      "trackingId": "01ff3d54-6d3a-4f64-b29b-28af0add4093",
+      "statusCode": "OK"
+    }
+  }
+]

@@ -10,7 +10,7 @@
     "client": "cd client && npm run dev",
     "server": "cd server && npm run start",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build"   
+    "build": "cd client && npm run build"
   },
   "keywords": [
     "nextjs",
@@ -22,5 +22,10 @@
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^6.0.0"
+  },
+  "dependencies": {
+    "@azure/cognitiveservices-computervision": "^7.1.0",
+    "@azure/ms-rest-azure-js": "^2.1.0",
+    "dotenv": "^8.2.0"
   }
 }

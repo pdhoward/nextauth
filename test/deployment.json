@@ -1,0 +1,82 @@
+{
+  "id": "/subscriptions/525c3af6-02f4-4b26-8957-40dc58667779/resourceGroups/vision/providers/Microsoft.Resources/deployments/Microsoft.CognitiveServicesComputerVision-20210406110639",
+  "name": "Microsoft.CognitiveServicesComputerVision-20210406110639",
+  "type": "Microsoft.Resources/deployments",
+  "tags": {
+    "marketplaceItemId": "Microsoft.CognitiveServicesComputerVision"
+  },
+  "properties": {
+    "templateHash": "7722035910925854975",
+    "parameters": {
+      "name": {
+        "type": "String",
+        "value": "strategicmachines"
+      },
+      "location": {
+        "type": "String",
+        "value": "eastus"
+      },
+      "sku": {
+        "type": "String",
+        "value": "S1"
+      },
+      "tagValues": {
+        "type": "Object",
+        "value": {}
+      },
+      "virtualNetworkType": {
+        "type": "String",
+        "value": "None"
+      },
+      "vnet": {
+        "type": "Object",
+        "value": {}
+      },
+      "ipRules": {
+        "type": "Array",
+        "value": []
+      }
+    },
+    "mode": "Incremental",
+    "debugSetting": {
+      "detailLevel": "None"
+    },
+    "provisioningState": "Succeeded",
+    "timestamp": "2021-04-06T16:10:34.143328Z",
+    "duration": "PT3.9559452S",
+    "correlationId": "f4978c85-e4e0-4c87-91e2-7f397475d27d",
+    "providers": [
+      {
+        "namespace": "Microsoft.CognitiveServices",
+        "resourceTypes": [
+          {
+            "resourceType": "accounts",
+            "locations": [
+              "eastus"
+            ]
+          }
+        ]
+      }
+    ],
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/525c3af6-02f4-4b26-8957-40dc58667779/resourceGroups/vision/providers/Microsoft.Network/virtualNetworks/cvCSDefaultVNet9901",
+            "resourceType": "Microsoft.Network/virtualNetworks",
+            "resourceName": "cvCSDefaultVNet9901"
+          }
+        ],
+        "id": "/subscriptions/525c3af6-02f4-4b26-8957-40dc58667779/resourceGroups/vision/providers/Microsoft.CognitiveServices/accounts/strategicmachines",
+        "resourceType": "Microsoft.CognitiveServices/accounts",
+        "resourceName": "strategicmachines"
+      }
+    ],
+    "outputResources": [
+      {
+        "id": "/subscriptions/525c3af6-02f4-4b26-8957-40dc58667779/resourceGroups/vision/providers/Microsoft.CognitiveServices/accounts/strategicmachines"
+      }
+    ],
+    "validationLevel": "Template"
+  }
+}
