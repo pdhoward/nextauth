@@ -26,6 +26,7 @@
   "dependencies": {
     "@azure/cognitiveservices-computervision": "^7.1.0",
     "@azure/ms-rest-azure-js": "^2.1.0",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0"
   }
 }
