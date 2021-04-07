@@ -14,8 +14,10 @@ export default function Home() {
         <h3 className={styles.title}>
           Welcome to <a href="https://proximitymachine.netlify.app/">PROXIMITY!</a>
         </h3>        
-
-        <Capture />
+        <div className={styles.grid}>
+          <Capture />
+        </div>
+       
         
       </main>
 
