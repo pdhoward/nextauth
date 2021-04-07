@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Capture from "./capture"
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -14,35 +15,8 @@ export default function Home() {
           Welcome to <a href="https://proximitymachine.netlify.app/">PROXIMITY!</a>
         </h3>        
 
-        <div className={styles.grid}>
-          <a href="https://example.org" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about PROXIMITY features and API.</p>
-          </a>
-
-          <a href="https://example.org" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about PROXIMITY in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://example.org"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example PROXIMITY projects.</p>
-          </a>
-
-          <a
-            href="https://example.org"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your PROXIMITY site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <Capture />
+        
       </main>
 
       <footer className={styles.footer}>
