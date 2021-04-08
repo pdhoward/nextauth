@@ -5,7 +5,8 @@ import { Root, Preview, Footer, GlobalStyle } from "../styles/capture";
 const Capture = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [cardImage, setCardImage] = useState();
-
+  // note conversion to base 64 string
+  // let dataUri = canvas.toDataURL('image/png', 1)
   return (
     <Fragment>
       <Root>

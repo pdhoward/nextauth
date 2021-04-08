@@ -13,9 +13,7 @@ export function useOffsets(vWidth, vHeight, cWidth, cHeight) {
       const y = vHeight > cHeight ? Math.round((vHeight - cHeight) / 2) : 0;
 
       setOffsets({ x, y });
-    }
-    console.log(`---------OffSets Hook -----------`)
-    console.log(vWidth, vHeight, cWidth, cHeight, offsets)
+    }   
   }, [vWidth, vHeight, cWidth, cHeight]);
 
   return offsets;

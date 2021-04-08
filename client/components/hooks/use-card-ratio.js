@@ -12,10 +12,8 @@ export function useCardRatio(initialParams) {
     if (height && width) {
       const isLandscape = height <= width;
       const ratio = isLandscape ? width / height : height / width;
-      console.log(`--------use-card-ratio Aspect Ration-------`)
-     
-      setAspectRatio(ratio);
-      console.log(height, width, ratio, aspectRatio)
+           
+      setAspectRatio(ratio);     
     }
   }, []);
 
