@@ -28,7 +28,9 @@ export function Camera({ onCapture, onClear }) {
   const [isFlashing, setIsFlashing] = useState(false);
 
   const mediaStream = useUserMedia(CAPTURE_OPTIONS);
+
   const [aspectRatio, calculateRatio] = useCardRatio(1.586);
+  
   const offsets = useOffsets(
     videoRef.current && videoRef.current.videoWidth,
     videoRef.current && videoRef.current.videoHeight,

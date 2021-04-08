@@ -14,6 +14,8 @@ export function useOffsets(vWidth, vHeight, cWidth, cHeight) {
 
       setOffsets({ x, y });
     }
+    console.log(`---------OffSets Hook -----------`)
+    console.log(vWidth, vHeight, cWidth, cHeight, offsets)
   }, [vWidth, vHeight, cWidth, cHeight]);
 
   return offsets;
