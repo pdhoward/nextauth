@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Head>
         <title>Strategic Machines</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />       
       </Head>
 
       <Capture /> 
