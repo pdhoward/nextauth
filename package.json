@@ -20,8 +20,8 @@
   ],
   "author": "Strategic Machines",
   "license": "MIT",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "concurrently": "^6.0.1"
-  },
-  "dependencies": {}
+  }
 }
